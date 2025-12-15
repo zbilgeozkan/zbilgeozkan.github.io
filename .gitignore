@@ -1,1 +1,11 @@
+# VS Code editor settings
 .vscode/
+
+# macOS system files
+.DS_Store
+
+# Node / npm (ileride eklersen)
+node_modules/
+
+# Logs
+*.log
