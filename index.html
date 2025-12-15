@@ -1,336 +1,593 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeynep Bilge Özkan | Portfolio</title>
-    
-    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeynep Bilge Özkan | Portfolio</title>
 
-    <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: 'Inter', sans-serif; 
-            line-height: 1.6;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+  <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-        h1, h2, h3, .retro-text, nav a, footer {
-            font-family: 'Press Start 2P', cursive;
-        }
+  <style>
+    body {
+      background: transparent;
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        a { text-decoration: none; }
+    h1, h2, h3, .retro-text, nav a, footer {
+      font-family: 'Press Start 2P', cursive;
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            flex: 1;
-        }
+    a { text-decoration: none; }
 
-        /* HEADER */
-        header {
-            background-color: #1c1c1c;
-            border-bottom: 4px solid #333;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      flex: 1;
+    }
 
-        .nav-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
+    /* HEADER */
+    header {
+      background-color: #1c1c1c;
+      border-bottom: 4px solid #333;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        .nav-links a {
-            color: #fff;
-            font-size: 0.7rem;
-            margin-left: 20px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      font-size: 0.7rem;
+      margin-left: 20px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { 
+        text-decoration: none;
+        transform: scale(1.1);          /* sadece büyüsün */
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 60px 0;
+      border-bottom: 2px dashed #444;
+      margin-bottom: 40px;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    /* ICONS */
+    .social-bar {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .social-bar a {
+      transition: transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-bar a:hover { transform: scale(1.2); }
+
+    .custom-svg svg {
+      width: 44px;
+      height: 44px;
+      fill: #e0e0e0;
+    }
+    .custom-svg:hover svg { fill: #e76e55; }
+
+    /* EXPERIENCE GRID CARDS */
+    .card-grid {
+      display: grid;
+      gap: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .nes-container.is-dark { background-color: #1c1c1c; }
+
+    .skill-tag {
+      display: inline-block;
+      background: #333;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      margin: 4px;
+      font-family: 'Press Start 2P', cursive;
+      border: 1px solid #555;
+    }
+
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px; /* Spaces between badges */
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .badge-wrapper {
+      transition: transform 0.2s ease;
+    }
+
+    .badge-wrapper:hover {
+      transform: scale(1.1);
+    }
+
+    /* FOOTER */
+    footer{
+    margin-top: 40px;
+    padding: 16px 0;
+    text-align: center;
+    font-size: 0.65rem;
+    color: #777;
+    border-top: 1px solid rgba(255,255,255,.08);
+    background: rgba(20,20,24,.85);
+    }
+
+    :root{
+      --bg:#0f0f12;
+      --panel:#17171c;
+      --panel2:#1f1f26;
+      --text:#eaeaf2;
+      --muted:#a5a5b4;
+      --accent:#209cee;
+      --accent2:#e76e55;
+    }
+
+    header{
+      backdrop-filter: blur(10px);
+      background: rgba(20,20,24,.78);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-container{ gap: 16px; }
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap: 12px;
+    }
+    .nav-links a{
+      margin-left: 0;
+      padding: 10px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-links a:hover{
+      color: #fff;
+      border-color: rgba(32,156,238,.6);
+      box-shadow: 0 0 0 3px rgba(32,156,238,.12);
+    }
+
+    .hero{
+      border-bottom: 1px dashed rgba(255,255,255,.12);
+      margin-bottom: 48px;
+      padding: 70px 0 60px;
+    }
+
+    h1{
+      font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+      line-height: 1.35;
+      margin: 18px 0 10px;
+      text-shadow: 0 2px 0 rgba(0,0,0,.4);
+    }
+
+    .hero p{ color: var(--muted) !important; }
+
+    .avatar{
+      border: 4px solid rgba(255,255,255,.9);
+      box-shadow:
+        0 0 0 6px rgba(32,156,238,.12),
+        0 18px 40px rgba(0,0,0,.55);
+    }
+
+    .nes-container.is-dark{
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border-color: rgba(255,255,255,.12);
+    }
+
+    .nes-container.is-rounded.is-dark{
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .nes-container.is-rounded.is-dark:hover{
+      transform: translateY(-4px);
+      border-color: rgba(32,156,238,.45);
+      box-shadow: 0 18px 40px rgba(0,0,0,.45);
+    }
+
+    /* Badges: show more */
+    .badge-item.is-hidden{ display:none; }
+
+
+    /* Force the experience cards to use flex layout */
+    #projects .card-grid > .nes-container{
+    display: flex;
+    flex-direction: column;
+    }
+
+    /* Make description take remaining space */
+    #projects .card-grid > .nes-container p{
+    flex: 1;
+    margin-bottom: 12px;
+    }
+
+    /* Pin button to bottom with breathing room */
+    #projects .card-grid > .nes-container .nes-btn{
+    margin-top: auto;
+    align-self: flex-start;
+    }
+
+    /* Optional: give extra bottom space so it doesn't touch border */
+    #projects .card-grid > .nes-container{
+    padding-bottom: 18px;
+    }
         
-        .nav-links a:hover { color: #209cee; }
+    /* =======================
+    Animated star background
+    ======================= */
 
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 60px 0;
-            border-bottom: 2px dashed #444;
-            margin-bottom: 40px;
-        }
+    /* Base gradient */
+    html{
+    background: linear-gradient(180deg, #0b0b10, #06060a);
+    }
 
-        .avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            object-fit: cover;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
+    /* Star layers */
+    html::before,
+    html::after{
+    content:"";
+    position: fixed;
+    inset: -2000px 0 0 0;
+    pointer-events: none;
+    z-index: -1;
+    background-repeat: repeat;
+    will-change: transform;
+    }
 
-        /* ICONS */
-        .social-bar {
-            margin-top: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-        }
-        
-        .social-bar a {
-            transition: transform 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .social-bar a:hover { transform: scale(1.2); }
+    /* Far stars (slow) */
+    html::before{
+    background-image:
+        radial-gradient(1px 1px at 10px 20px, rgba(255,255,255,.9) 60%, transparent 61%),
+        radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,.75) 60%, transparent 61%),
+        radial-gradient(1px 1px at 90px 140px, rgba(255,255,255,.65) 60%, transparent 61%),
+        radial-gradient(1px 1px at 130px 40px, rgba(255,255,255,.7) 60%, transparent 61%),
+        radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,.55) 60%, transparent 61%);
+    background-size: 200px 200px;
+    animation: starsSlow 120s linear infinite;
+    opacity: .35;
+    }
 
-        .custom-svg svg {
-            width: 44px;
-            height: 44px;
-            fill: #e0e0e0;
-        }
-        .custom-svg:hover svg { fill: #e76e55; }
+    /* Near stars (faster) */
+    html::after{
+    background-image:
+        radial-gradient(2px 2px at 20px 60px, rgba(255,255,255,.9) 60%, transparent 61%),
+        radial-gradient(1.5px 1.5px at 80px 30px, rgba(255,255,255,.85) 60%, transparent 61%),
+        radial-gradient(1.5px 1.5px at 140px 110px, rgba(255,255,255,.75) 60%, transparent 61%),
+        radial-gradient(2px 2px at 170px 170px, rgba(255,255,255,.7) 60%, transparent 61%);
+    background-size: 220px 220px;
+    animation: starsFast 70s linear infinite;
+    opacity: .25;
+    }
 
-        /* EXPERIENCE GRID CARDS */
-        .card-grid {
-            display: grid;
-            gap: 25px;
-        }
+    @keyframes starsSlow{
+    from { transform: translateY(0); }
+    to   { transform: translateY(2000px); }
+    }
 
-        @media (min-width: 768px) {
-            .card-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+    @keyframes starsFast{
+    from { transform: translateY(0); }
+    to   { transform: translateY(3000px); }
+    }
 
-        .nes-container.is-dark { background-color: #1c1c1c; }
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce){
+    html::before,
+    html::after{
+        animation: none !important;
+    }
+    }
 
-        .skill-tag {
-            display: inline-block;
-            background: #333;
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.65rem;
-            margin: 4px;
-            font-family: 'Press Start 2P', cursive;
-            border: 1px solid #555;
-        }
+    .exp-company{
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    }
 
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px; /* Spaces between badges */
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-        }
-        
-        .badge-wrapper {
-            transition: transform 0.2s ease;
-        }
-        
-        .badge-wrapper:hover {
-            transform: scale(1.1);
-        }
+    .exp-company.is-orange{ color: #e76e55; }   /* ROT */
+    .exp-company.is-green { color: #92cc41; }   /* JUNGHEINRICH */
+    .exp-company.is-blue  { color: #209cee; }   /* OUTLIER */
+    .exp-company.is-yellow   { color: #f7d51d; }   /* ARKEL */
 
-        /* FOOTER */
-        footer {
-            background-color: #1c1c1c;
-            border-top: 4px solid #333;
-            padding: 40px 0;
-            text-align: center;
-            font-size: 0.7rem;
-            color: #666;
-            margin-top: auto;
-        }
-    </style>
+
+    .exp-role{
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    display: block;
+    }
+
+    .exp-tags{
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+    }
+
+    .exp-card p{
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 12px 0;
+    }
+
+
+  </style>
 </head>
+
 <body>
+<div class="bg-stars"></div>
+  <header>
+    <div class="nav-container">
+      <a href="#" class="retro-text" style="color:#fff; font-size:12px;">Z.BILGE.OZKAN</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Experience</a>
+        <a href="#badges">Badges</a>
+        <a href="mailto:zeynepbilgeozkan@hotmail.com">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <header>
-        <div class="nav-container">
-            <a href="#" class="retro-text" style="color:#fff; font-size:12px;">Z.BILGE.OZKAN</a>
-            <nav class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Experience</a>
-                <a href="#badges">Badges</a>
-                <a href="mailto:zeynepbilgeozkan@hotmail.com">Contact</a>
-            </nav>
+  <div class="container">
+    <section class="hero">
+      <div style="position: relative; margin-bottom: 25px;">
+        <img src="https://github.com/zbilgeozkan.png" alt="Profile" class="avatar">
+        <i class="nes-icon is-large star" style="position: absolute; bottom: -10px; right: -10px;"></i>
+      </div>
+
+      <h1>Zeynep Bilge Özkan</h1>
+      <p style="color: #888; font-size: 0.9em; max-width: 600px; margin-top: 10px;">
+        Computer Engineer | @ICU & TUC<br>
+      </p>
+
+      <div class="social-bar">
+        <a href="https://github.com/zbilgeozkan" target="_blank">
+          <i class="nes-icon github is-medium"></i>
+        </a>
+
+        <a href="https://linkedin.com/in/zeynepbilgeozkan" target="_blank">
+          <i class="nes-icon linkedin is-medium"></i>
+        </a>
+
+        <a href="https://medium.com/@zeynepbilgeozkan" target="_blank" class="custom-svg">
+          <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        </a>
+
+        <a href="mailto:zeynepbilgeozkan@hotmail.com">
+          <i class="nes-icon gmail is-medium"></i>
+        </a>
+      </div>
+    </section>
+
+    <section id="about" style="margin-bottom: 60px;">
+      <h2 class="retro-text" style="font-size: 1.2rem; margin-bottom: 20px; border-left: 5px solid #209cee; padding-left: 15px;">
+        About Me
+      </h2>
+      <div class="nes-container is-dark with-title">
+        <p class="title">Mission Briefing</p>
+        <p>
+          I am a Computer Engineering student passionate about technology and innovation.
+          I have experience in <b>AI (LLM & RAG), Python, VR/XR Technologies (Unity/C#) and IT Technologies</b>.
+          I love building interactive simulations and creating digital solutions for communities.
+        </p>
+
+        <div style="margin-top: 20px;">
+          <span class="skill-tag">RAG / LLM / ML</span>
+          <span class="skill-tag">Python & AI</span>
+          <span class="skill-tag">C# / Unity</span>
+          <span class="skill-tag">VR/XR</span>
+          <span class="skill-tag">Power Apps</span>
+          <span class="skill-tag">IT</span>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <div class="container">
-        
-        <section class="hero">
-            <div style="position: relative; margin-bottom: 25px;">
-                <img src="https://github.com/zbilgeozkan.png" alt="Profile" class="avatar">
-                <i class="nes-icon is-large star" style="position: absolute; bottom: -10px; right: -10px;"></i>
-            </div>
-            
-            <h1>Zeynep Bilge Özkan</h1>
-            <p style="color: #888; font-size: 0.9em; max-width: 600px; margin-top: 10px;">
-                Computer Engineer | @ICU & TUC<br>
+    <section id="projects">
+      <h2 class="retro-text" style="font-size: 1.2rem; margin-bottom: 20px; border-left: 5px solid #e76e55; padding-left: 15px;">
+        Experience & Projects
+      </h2>
+
+      <div class="card-grid">
+        <div class="nes-container is-rounded is-dark exp-card">
+            <h3 class="exp-company is-orange">ROT STUDIO</h3>
+            <span class="exp-role">Software Intern · 2024</span>
+
+            <p>
+                Built a RAG-based pipeline for an intelligent training assistant and developed interactive VR scenarios using Unity.
             </p>
 
-            <div class="social-bar">
-                <a href="https://github.com/zbilgeozkan" target="_blank">
-                    <i class="nes-icon github is-medium"></i>
-                </a>
-                
-                <a href="https://linkedin.com/in/zeynepbilgeozkan" target="_blank">
-                    <i class="nes-icon linkedin is-medium"></i>
-                </a>
-
-                <a href="https://medium.com/@zeynepbilgeozkan" target="_blank" class="custom-svg">
-                    <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-                </a>
-                
-                <a href="mailto:zeynepbilgeozkan@hotmail.com">
-                    <i class="nes-icon gmail is-medium"></i>
-                </a>
+            <div class="exp-tags">
+                <span class="nes-btn is-error is-small">VR & AI</span>
             </div>
-        </section>
+        </div>
 
-        <section id="about" style="margin-bottom: 60px;">
-            <h2 class="retro-text" style="font-size: 1.2rem; margin-bottom: 20px; border-left: 5px solid #209cee; padding-left: 15px;">
-                About Me
-            </h2>
-            <div class="nes-container is-dark with-title">
-                <p class="title">Mission Briefing</p>
-                <p>
-                    I am a Computer Engineering student passionate about technology and innovation. 
-                    I have experience in <b>AI (LLM & RAG), Python, VR/XR Technologies (Unity/C#) and IT Technologies</b>. 
-                    I love building interactive simulations and creating digital solutions for communities.
-                </p>
-                
-                <div style="margin-top: 20px;">
-                    <span class="skill-tag">RAG / LLM / ML</span>
-                    <span class="skill-tag">Python & AI</span>
-                    <span class="skill-tag">C# / Unity</span>
-                    <span class="skill-tag">VR/XR</span>
-                    <span class="skill-tag">Power Apps</span>
-                    <span class="skill-tag">IT</span>
-                </div>
-            </div>
-        </section>
 
-        <section id="projects">
-            <h2 class="retro-text" style="font-size: 1.2rem; margin-bottom: 20px; border-left: 5px solid #e76e55; padding-left: 15px;">
-                Experience & Projects
-            </h2>
+        <div class="nes-container is-rounded is-dark exp-card"> 
+            <h3 class="exp-company is-green">JUNGHEINRICH</h3> 
+            <span class="exp-role">IT Intern · 2023</span> 
             
-            <div class="card-grid">
-                <div class="nes-container is-rounded is-dark">
-                    <h3 style="font-size: 0.9rem; color: #e76e55;">ROT STUDIO</h3>
-                    <p style="font-size: 0.8rem; margin: 15px 0;">
-                        Built a RAG-based pipeline for an intelligent training assistant and developed interactive VR scenarios using Unity.
-                    </p>
-                    <a href="#" class="nes-btn is-warning is-small">VR & AI</a>
-                </div>
-
-                <div class="nes-container is-rounded is-dark">
-                    <h3 style="font-size: 0.9rem; color: #92cc41;">JUNGHEINRICH</h3>
-                    <p style="font-size: 0.8rem; margin: 15px 0;">
-                        Developed a Power Apps solution for HR-IT communication and provided IT support for global teams.
-                    </p>
-                    <a href="#" class="nes-btn is-success is-small">IT & Apps</a>
-                </div>
-
-                <div class="nes-container is-rounded is-dark">
-                    <h3 style="font-size: 0.9rem; color: #209cee;">AI TRAINER</h3>
-                    <p style="font-size: 0.8rem; margin: 15px 0;">
-                        Evaluated and refined LLM (Large Language Model) outputs for accuracy and clarity at Outlier.
-                    </p>
-                    <a href="#" class="nes-btn is-primary is-small">Gen AI</a>
-                </div>
-                
-                <div class="nes-container is-rounded is-dark">
-                    <h3 style="font-size: 0.9rem; color: #e76e55;">ARKEL</h3>
-                    <p style="font-size: 0.8rem; margin: 15px 0;">
-                        Configured virtual networks on Cisco Packet Tracer and managed Windows Server administration.
-                    </p>
-                    <a href="#" class="nes-btn is-error is-small">Network & IT</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="badges" style="margin-top: 60px;">
-            <h2 class="retro-text" style="font-size: 1.2rem; margin-bottom: 20px; border-left: 5px solid #f7d51d; padding-left: 15px;">
-                Achievements & Badges
-            </h2>
+            <p> Developed a Power Apps solution for HR–IT communication and provided IT support for global teams. </p> 
             
-            <div class="nes-container is-dark with-title">
-                <p class="title">Inventory</p>
-                <p style="font-size: 0.8rem; margin-bottom: 20px;">
-                    Digital credentials verified by Credly.
-                </p>
+            <div class="exp-tags"> 
+                <span class="nes-btn is-success is-small">IT & Apps</span> 
+            </div> 
+        </div>
 
-                <div class="badge-container">
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="f3d7ebce-d8cd-402e-89de-eeeb1f71035a" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="741a7755-9e2f-4cda-b4f2-5474db3f8d91" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2b08e77f-f7bf-4dea-aeff-10b1e5234a89" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="e7541cad-86ac-43cc-8f7d-102f72c7d5f0" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="59d8bc40-44a9-4e37-8c89-e2108089d9a4" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="7b081be3-e2ea-4e7f-abf3-41e3cca08c7d" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="3b918754-ad3d-449a-b2d3-634ce3e528b0" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="3c7cc8ca-b8a2-4af3-b36f-cd98995aa7e8" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cee4e70c-40ed-4854-80fc-16455e1243ab" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b84bad39-a639-47e4-b404-adce1e7f6bd2" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="4d258dc6-33a1-4e8b-a72e-d24191b718ce" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="5a78f26b-706d-4066-afab-565bde4ec528" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="5c4796a0-a224-4447-b4b4-5d7e70c9066f" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2355de93-0d38-4667-b913-f2b7b50d970e" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="20dd2f6e-bd8d-4826-a7e9-cea313c3a581" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="11b71ad9-74d8-42a4-9f79-d8531318524e" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="3940c77d-9d13-4a62-9323-48898f0a9d6c" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="718387f2-aa02-4631-bebf-9f3046050a0f" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="35c91e9c-6c8b-4485-a01f-35f49cac5413" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="10973c52-cb57-474c-b1fe-03df2881e9c1" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="ab575716-11bd-4bc0-bd6a-67d41b7a5a3e" data-share-badge-host="https://www.credly.com"></div></div>
-                    <div class="badge-wrapper"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="c8467f8d-8c6f-4357-b6e0-da339f2cf6ad" data-share-badge-host="https://www.credly.com"></div></div>
-                </div>
-                
-                <div style="width: 100%; text-align: center; margin-top: 25px;">
-                    <a href="https://www.credly.com/users/zeynep-bilge-ozkan/" target="_blank" class="nes-btn is-primary">
-                        View Profile
-                    </a>
-                </div>
+        <div class="nes-container is-rounded is-dark exp-card">
+            <h3 class="exp-company is-blue">OUTLIER</h3>
+            <span class="exp-role">AI Trainer · 2024</span>
+
+            <p>
+                Evaluated and refined LLM (Large Language Model) outputs for accuracy and clarity.
+            </p>
+
+            <div class="exp-tags">
+                <span class="nes-btn is-primary is-small">Gen AI</span>
             </div>
-        </section>
+        </div>
 
-    </div>
+        <div class="nes-container is-rounded is-dark exp-card">
+            <h3 class="exp-company is-yellow">ARKEL</h3>
+            <span class="exp-role">IT Intern · 2022</span>
+
+            <p>
+                Configured virtual networks on Cisco Packet Tracer and managed Windows Server administration.
+            </p>
+
+            <div class="exp-tags">
+                <span class="nes-btn is-warning is-small">Network & IT</span>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="badges" style="margin-top: 60px;">
+      <h2 class="retro-text" style="font-size: 1.2rem; margin-bottom: 20px; border-left: 5px solid #f7d51d; padding-left: 15px;">
+        Achievements & Badges
+      </h2>
+
+      <div class="nes-container is-dark with-title">
+        <p class="title">Inventory</p>
+        <p style="font-size: 0.8rem; margin-bottom: 20px;">
+          Digital credentials verified by Credly.
+        </p>
+
+        <div class="badge-container">
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="35c91e9c-6c8b-4485-a01f-35f49cac5413" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="11b71ad9-74d8-42a4-9f79-d8531318524e" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="5a78f26b-706d-4066-afab-565bde4ec528" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="ab575716-11bd-4bc0-bd6a-67d41b7a5a3e" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="f3d7ebce-d8cd-402e-89de-eeeb1f71035a" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="5c4796a0-a224-4447-b4b4-5d7e70c9066f" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="741a7755-9e2f-4cda-b4f2-5474db3f8d91" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="c8467f8d-8c6f-4357-b6e0-da339f2cf6ad" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="4d258dc6-33a1-4e8b-a72e-d24191b718ce" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2b08e77f-f7bf-4dea-aeff-10b1e5234a89" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="3940c77d-9d13-4a62-9323-48898f0a9d6c" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="59d8bc40-44a9-4e37-8c89-e2108089d9a4" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="7b081be3-e2ea-4e7f-abf3-41e3cca08c7d" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="3b918754-ad3d-449a-b2d3-634ce3e528b0" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="e7541cad-86ac-43cc-8f7d-102f72c7d5f0" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="3c7cc8ca-b8a2-4af3-b36f-cd98995aa7e8" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cee4e70c-40ed-4854-80fc-16455e1243ab" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b84bad39-a639-47e4-b404-adce1e7f6bd2" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2355de93-0d38-4667-b913-f2b7b50d970e" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="20dd2f6e-bd8d-4826-a7e9-cea313c3a581" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="718387f2-aa02-4631-bebf-9f3046050a0f" data-share-badge-host="https://www.credly.com"></div></div>
+          <div class="badge-wrapper badge-item"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="10973c52-cb57-474c-b1fe-03df2881e9c1" data-share-badge-host="https://www.credly.com"></div></div>
+        </div>
+
+        <!-- Show more button -->
+        <div style="width:100%; text-align:center; margin-top:18px;">
+          <button id="toggleBadges" class="nes-btn is-warning">Show more</button>
+        </div>
+
+        <div style="width: 100%; text-align: center; margin-top: 25px;">
+          <a href="https://www.credly.com/users/zeynep-bilge-ozkan/" target="_blank" class="nes-btn is-primary">
+            View Profile
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
 
     <footer>
-        <div class="container">
-            <p style="margin-bottom: 15px;">
-                <i class="nes-icon coin is-small"></i> INSERT COIN TO CONTINUE <i class="nes-icon coin is-small"></i>
-            </p>
-            <p>
-                Designed with <i class="nes-icon heart is-small"></i> by Zeynep Bilge Özkan.
-            </p>
-            <p style="margin-top:10px; opacity: 0.5;">&copy; 2025 All Rights Reserved.</p>
-        </div>
+    <div class="container footer-content">
+        <p class="footer-coin">
+        <i class="nes-icon coin is-small"></i>
+        INSERT COIN TO CONTINUE
+        <i class="nes-icon coin is-small"></i>
+        </p>
+
+        <p class="footer-designed">
+        Designed with <i class="nes-icon heart is-small"></i> by Zeynep Bilge Özkan.
+        </p>
+
+        <br>
+        <br>
+
+        <p class="footer-copy">
+        &copy; 2025 All Rights Reserved.
+        </p>
+    </div>
     </footer>
 
-    <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
+  <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+  <!-- Badge: show more / less -->
+  <script>
+    (function () {
+      const items = Array.from(document.querySelectorAll('.badge-item'));
+      const btn = document.getElementById('toggleBadges');
+      if (!items.length || !btn) return;
+
+      const DEFAULT_VISIBLE = 6;
+      let expanded = false;
+
+      function apply() {
+        items.forEach((el, i) => {
+          el.classList.toggle('is-hidden', !expanded && i >= DEFAULT_VISIBLE);
+        });
+        btn.textContent = expanded ? 'Show less' : 'Show more';
+      }
+
+      btn.addEventListener('click', () => {
+        expanded = !expanded;
+        apply();
+      });
+
+      apply();
+    })();
+  </script>
 </body>
 </html>
